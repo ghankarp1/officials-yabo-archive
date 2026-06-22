@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>竞彩网 · 体育彩票信息站点介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background: #f7fafc;
+      color: #1e293b;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(145deg, #0f2c3b 0%, #1b4b5c 100%);
+      padding: 3.5rem 1.25rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: #f7fafc;
+      clip-path: ellipse(70% 100% at 50% 100%);
+    }
+
+    .hero h1 {
+      color: #d9f0f5;
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      color: #b8dbe6;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 1.8rem;
+      font-weight: 300;
+    }
+
+    .hero-link {
+      display: inline-block;
+      background: #4cbec0;
+      color: #0f2c3b;
+      text-decoration: none;
+      padding: 0.9rem 3rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 20px -8px rgba(0, 60, 70, 0.4);
+      transition: all 0.25s ease;
+    }
+
+    .hero-link:hover {
+      background: #6cd4d6;
+      transform: scale(1.02);
+      box-shadow: 0 12px 24px -6px #0b3a44;
+    }
+
+    /* 区块通用 */
+    section {
+      padding: 2.8rem 0;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #13424f;
+      margin-bottom: 1.8rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 40%;
+      height: 3px;
+      background: #4cbec0;
+      border-radius: 4px;
+    }
+
+    /* 优势网格卡片 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 50, 60, 0.06);
+      border: 1px solid #e2edf1;
+      transition: transform 0.15s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px -8px rgba(20, 80, 90, 0.12);
+    }
+
+    .card-icon {
+      background: #dbf0f2;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      font-size: 1.7rem;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #13424f;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    /* 说明区 */
+    .intro-block {
+      background: white;
+      border-radius: 30px;
+      padding: 2.2rem 2.2rem 2.5rem;
+      box-shadow: 0 6px 18px rgba(0, 40, 50, 0.03);
+      border: 1px solid #ddeef2;
+    }
+
+    .intro-block p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .intro-block strong {
+      color: #1b5b6c;
+    }
+
+    .intro-block a {
+      color: #1c7a85;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .intro-block a:hover {
+      color: #4cbec0;
+    }
+
+    /* FAQ摘要 */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.6rem;
+      margin-top: 1.6rem;
+    }
+
+    .faq-item {
+      background: #f0f6f9;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+    }
+
+    .faq-item .q {
+      font-weight: 600;
+      color: #0f3846;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-item .a {
+      color: #3b5e6b;
+      font-size: 0.93rem;
+    }
+
+    .faq-footnote {
+      margin-top: 1.8rem;
+      font-size: 0.95rem;
+      color: #3f6270;
+      background: #eaf3f6;
+      padding: 1rem 1.5rem;
+      border-radius: 40px;
+      text-align: center;
+    }
+
+    /* 底部 */
+    footer {
+      background: #102f3a;
+      color: #b7d8e2;
+      padding: 2rem 1.25rem;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: #85d0d4;
+      text-decoration: none;
+      border-bottom: 1px dotted #3d7b85;
+    }
+
+    footer a:hover {
+      color: #b8f0f0;
+    }
+
+    footer p {
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .intro-block {
+        padding: 1.6rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 2.5rem 1rem 3rem;
+      }
+
+      .hero-link {
+        font-size: 1rem;
+        padding: 0.7rem 2rem;
+      }
+
+      .card {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- hero 区 -->
+  <div class="hero">
+    <div class="container">
+      <h1>体育赛事资讯 · 可信窗口</h1>
+      <p>一个专注于体育竞猜信息与赛事介绍的站点，提供基础数据参考和玩法说明，适合对体育赛事有兴趣的朋友日常浏览。</p>
+      <a href="https://site-cn-sporttery.com" class="hero-link">竞彩网</a>
+    </div>
+  </div>
+
+  <!-- 优势区：网格卡片 -->
+  <section>
+    <div class="container">
+      <h2 class="section-title">站点特点</h2>
+      <div class="grid-cards">
+        <div class="card">
+          <div class="card-icon">📋</div>
+          <h3>赛事覆盖</h3>
+          <p>包含足球、篮球等主流联赛的基础信息及赛程数据，方便快速查阅近期比赛安排。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚙️</div>
+          <h3>玩法说明</h3>
+          <p>对常见的竞猜类型和术语进行清晰解释，帮助新访客理解基本规则与逻辑。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>数据参考</h3>
+          <p>提供历史交锋、近期战绩等统计表格，作为赛事分析的辅助信息，不构成任何预测。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔒</div>
+          <h3>信息透明</h3>
+          <p>页面标识清晰，站点介绍和内容来源均如实标注，尊重用户知情权。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 说明区：站点介绍与可信说明 -->
+  <section>
+    <div class="container">
+      <div class="intro-block">
+        <h2 class="section-title" style="margin-bottom:1.2rem;">关于本站</h2>
+        <p><strong>竞彩网</strong>（<a href="https://site-cn-sporttery.com">竞彩网</a>）是一个面向体育爱好者的信息聚合型站点。站内内容围绕赛事数据、竞猜玩法科普以及体育资讯展开，不涉及任何形式的投注引导或盈利承诺。所有公开信息均来自合规渠道，并经过人工整理与核对，力求准确，但不对数据的实时性做绝对保证。</p>
+        <p>我们坚持<strong>信息中立、内容克制</strong>的原则——不夸大比赛结果的可预测性，不渲染“必胜技巧”或“内部消息”。页面中所展示的赛程、赔率变化历史、球队统计等，均只作为兴趣参考，用户应当基于个人判断进行任何决策。</p>
+        <p>如果您是第一次接触竞猜类信息，建议先花几分钟浏览站内的「玩法介绍」和「常见问题」板块，对基本概念建立清晰认知。<a href="https://site-cn-sporttery.com">竞彩网</a> 的初衷是让体育数据变得更易懂，同时保持客观与审慎。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ 摘要 -->
+  <section style="padding-top: 0.5rem;">
+    <div class="container">
+      <h2 class="section-title">常见疑问 · 摘要</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="q">站点数据多久更新一次？</div>
+          <div class="a">赛程和比分数据通常在比赛结束后数分钟内更新，历史统计每日同步一次。遇到大型赛事期间会适当增加频率。</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">需要注册或付费吗？</div>
+          <div class="a">目前站内所有内容免费浏览，无需注册。部分数据表格可能会根据访问量做临时优化，不影响基础阅读。</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">玩法说明适合新手吗？</div>
+          <div class="a">是的，玩法介绍板块从基础名词开始解释，附带简单例子，零基础也能看懂。后续会逐步补充进阶内容。</div>
+        </div>
+        <div class="faq-item">
+          <div class="q">信息来源是否可靠？</div>
+          <div class="a">所有赛事数据均来自公开的体育数据接口及联赛官方统计，经过二次校对。不采用未经验证的自媒体或论坛内容。</div>
+        </div>
+      </div>
+      <div class="faq-footnote">
+        更多问题可以浏览站内的完整 FAQ 页面，或通过站点底部邮件联系我们。
+      </div>
+    </div>
+  </section>
+
+  <!-- 底部链接 -->
+  <footer>
+    <div class="container">
+      <p>体育信息参考站点 · <a href="https://site-cn-sporttery.com">竞彩网</a></p>
+      <p style="margin-top:0.6rem; font-size:0.8rem; opacity:0.65;">内容仅供兴趣交流，不构成任何建议。请合理分配时间，理性看待赛事分析。</p>
+    </div>
+  </footer>
+
+</body>
+</html>
