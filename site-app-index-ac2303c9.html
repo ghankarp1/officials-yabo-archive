@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>竞彩 · 轻导航</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; background: #f5f7fb; color: #1e2a3a; line-height: 1.6; }
+    a { color: #b8860b; text-decoration: none; transition: color .15s; }
+    a:hover { color: #d4a017; text-decoration: underline; }
+
+    /* 深色头图 + 导航 */
+    .top-bar { background: #0f1a2b; color: #eaeef3; padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px; flex-wrap: wrap; }
+    .logo-area { font-weight: 600; font-size: 1.1rem; letter-spacing: .5px; display: flex; align-items: center; gap: 8px; }
+    .logo-area span { background: #b8860b; color: #0f1a2b; padding: 2px 10px; border-radius: 16px; font-size: .8rem; font-weight: 500; }
+    .nav-links { display: flex; gap: 2.2rem; font-size: .95rem; }
+    .nav-links a { color: #bcc9db; }
+    .nav-links a:hover { color: #f0e6d0; text-decoration: none; }
+
+    /* hero 区（深色延续） */
+    .hero-dark { background: linear-gradient(145deg, #0b1625 0%, #1b2a3f 100%); color: #e4ecf5; padding: 4.5rem 5% 4rem; }
+    .hero-dark h1 { font-size: 2.3rem; font-weight: 500; letter-spacing: -.3px; margin-bottom: 1rem; max-width: 720px; }
+    .hero-dark p { font-size: 1.05rem; max-width: 640px; color: #bccbde; margin-bottom: 1.2rem; }
+    .hero-dark .tag { display: inline-block; background: #2c3e55; padding: .2rem 1rem; border-radius: 20px; font-size: .85rem; color: #d4dfed; margin-top: .4rem; }
+
+    /* 正文主体浅色区 */
+    .content-wrap { max-width: 1200px; margin: 0 auto; padding: 2.8rem 5% 4rem; }
+
+    /* 核心介绍 */
+    .intro-card { background: #ffffff; border-radius: 18px; padding: 2rem 2.4rem; box-shadow: 0 4px 12px rgba(0,0,0,0.02); margin-bottom: 3rem; border: 1px solid #e9edf4; }
+    .intro-card h2 { font-size: 1.5rem; font-weight: 500; color: #0f1a2b; margin-bottom: .75rem; }
+    .intro-card p { margin-bottom: .8rem; }
+
+    /* 三个场景模块 — 卡片网格 */
+    .scene-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; margin: 2.2rem 0 3rem; }
+    .scene-card { background: #ffffff; border-radius: 20px; padding: 1.8rem 1.5rem 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.02); border: 1px solid #e6ecf5; transition: all .2s; }
+    .scene-card:hover { border-color: #b8860b30; box-shadow: 0 8px 20px rgba(0,0,0,0.03); }
+    .scene-card .emoji { font-size: 1.8rem; display: block; margin-bottom: .6rem; }
+    .scene-card h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: .5rem; }
+    .scene-card p { font-size: .95rem; color: #3e4b5e; }
+
+    /* 常见说明 (FAQ 摘要) */
+    .faq-summary { background: #ffffff; border-radius: 18px; padding: 2rem 2.4rem; border: 1px solid #e6ecf5; margin-top: 1.8rem; }
+    .faq-summary h2 { font-size: 1.4rem; font-weight: 500; margin-bottom: 1.2rem; }
+    .faq-item { border-bottom: 1px solid #eaeef6; padding: .9rem 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question { font-weight: 500; display: flex; justify-content: space-between; align-items: center; cursor: default; color: #1e2a3a; }
+    .faq-question::after { content: '﹀'; font-size: .9rem; color: #8a9bb0; }
+    .faq-answer { margin-top: .4rem; font-size: .95rem; color: #4b5a6f; padding-right: 1.8rem; }
+
+    /* 再次访问提示 & 收藏 */
+    .access-note { background: #f1f5fd; border-left: 4px solid #b8860b; padding: 1.5rem 2rem; border-radius: 0 12px 12px 0; margin: 2.2rem 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; }
+    .access-note p { max-width: 70%; }
+    .access-note .mark { background: #e2d9c0; color: #1e2a3a; padding: .3rem 1rem; border-radius: 30px; font-size: .9rem; font-weight: 450; white-space: nowrap; }
+
+    /* 响应式 */
+    @media (max-width: 860px) {
+      .scene-grid { grid-template-columns: 1fr 1fr; }
+      .access-note p { max-width: 100%; margin-bottom: .8rem; }
+    }
+    @media (max-width: 600px) {
+      .top-bar { height: auto; padding: .8rem 5%; flex-direction: column; gap: .5rem; }
+      .nav-links { gap: 1.2rem; font-size: .9rem; }
+      .hero-dark h1 { font-size: 1.9rem; }
+      .scene-grid { grid-template-columns: 1fr; }
+      .intro-card, .faq-summary { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 顶部导航 -->
+  <header class="top-bar">
+    <div class="logo-area">
+      <span>⚡</span> 竞彩一览
+    </div>
+    <div class="nav-links">
+      <a href="https://site-app-sporttery.com" style="color:#f0e6d0;">竞彩网</a>
+      <a href="#intro">概要</a>
+      <a href="#scenes">场景</a>
+      <a href="#faq">说明</a>
+    </div>
+  </header>
+
+  <!-- hero 深色区 -->
+  <section class="hero-dark">
+    <h1>再次访问 · 持续关注</h1>
+    <p>每一次浏览都在累积熟悉的路径，收藏即是一种轻承诺。保持对信息的节奏，不遗漏更新。</p>
+    <span class="tag">轻导航 · 常回看</span>
+  </section>
+
+  <!-- 正文浅色区域 -->
+  <div class="content-wrap">
+
+    <!-- 核心介绍（从再次访问、收藏、持续关注角度） -->
+    <div class="intro-card" id="intro">
+      <h2>为什么值得再回来</h2>
+      <p>当页面地址被收藏，再次打开的阻力几乎为零。对于经常关注赛程、数据或资讯的人来说，<a href="https://site-app-sporttery.com">竞彩网</a>保持相对稳定的内容结构与更新节奏。与其每次搜索入口，不如直接将地址固定到书签栏。</p>
+      <p>整理信息流本身也是一种效率。那些被反复查阅的模块、赛历、统计页面，值得被更直接地抵达。持续关注，意味着你能够快速捕捉变化，而不是每次都重新适应布局。</p>
+      <p>对多数用户而言，固定入口+适度回顾就已足够。不需要频繁刷新，也不必记住多个路径；一次收藏，后续调用都在。简洁且可靠。</p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <h2 style="font-weight:500; font-size:1.3rem; margin-bottom:.5rem;" id="scenes">三种常见场景</h2>
+    <div class="scene-grid">
+      <div class="scene-card">
+        <span class="emoji">🔖</span>
+        <h3>收藏后快速定位</h3>
+        <p>将地址栏内容存入浏览器书签或设备主屏幕。后续访问只需轻触一次，省去重新输入或搜索的步骤，尤其适合移动端。</p>
+      </div>
+      <div class="scene-card">
+        <span class="emoji">🔄</span>
+        <h3>间歇性回顾</h3>
+        <p>无需每天逗留，但每隔一段时间回来查看更新。站点内容周期相对固定，间隔性访问也能掌握大致动态。</p>
+      </div>
+      <div class="scene-card">
+        <span class="emoji">📋</span>
+        <h3>跨设备同步查阅</h3>
+        <p>同一账号在不同设备上同步书签，或者直接记住域名。无论使用电脑还是手机，访问路径保持一致，减少跳转损耗。</p>
+      </div>
+    </div>
+
+    <!-- 再次访问提示 + 收藏区块 -->
+    <div class="access-note">
+      <p><strong>📌 常回看小建议：</strong> 把 <a href="https://site-app-sporttery.com">竞彩网</a> 加入浏览器书签栏，或者安卓/iOS 主屏添加网页快捷方式。下次打开就是熟悉的界面，不需要重新适应。</p>
+      <span class="mark">书签 + 主屏</span>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <div class="faq-summary" id="faq">
+      <h2>常见简要说明</h2>
+      <div class="faq-item">
+        <div class="faq-question">页面内容多久会有明显更新？</div>
+        <div class="faq-answer">根据赛事周期编排，热门期间更新稍密集，休整期相对平稳。建议每周至少回看一次，不容易错过变动。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">是否需要注册或登录才能浏览？</div>
+        <div class="faq-answer">大部分信息可直接浏览，部分个性化功能可能需要账号。具体以实际页面提示为准。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">移动端与电脑端体验一致吗？</div>
+        <div class="faq-answer">整体布局适配响应式设计，但部分交互在大屏上更舒展。移动端同样可以完成主要操作。</div>
+      </div>
+      <div class="faq-item" style="border-bottom: none;">
+        <div class="faq-question">如何确保收藏链接一直有效？</div>
+        <div class="faq-answer">域名长期使用，结构保持稳定。偶尔有路径调整也会做重定向，收藏失效概率很低。</div>
+      </div>
+    </div>
+
+    <!-- 底部轻提示 (不包含诱导) -->
+    <div style="margin-top:2.8rem; font-size:.9rem; color:#6f7d91; border-top:1px solid #e2e8f0; padding-top:1.8rem; text-align:center;">
+      页面内容仅作介绍 · 地址：<a href="https://site-app-sporttery.com" style="color:#6f7d91;text-decoration:underline;">竞彩网</a>
+    </div>
+
+  </div>
+</body>
+</html>
